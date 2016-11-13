@@ -2,7 +2,8 @@
 using Verse;               // RimWorld universal objects are here (like 'Building')
 using RimWorld;
 
-
+// Stirling Enging class definition for Rimworld. Generates electricity from temperature differences between rooms.
+// C# code based on the cooler that ships with the game.
 namespace StirlingEngine
 {
     public class Building_StirlingEngine : Building_TempControl
@@ -11,11 +12,7 @@ namespace StirlingEngine
         private const float conductivity = 0.5f;
         private const float powerSlope = 3.9f;
         private const float powerYIntercept = 53.9f;
-
-        //private const float HeatOutputMultiplier = 1.25f;
-
-        //private const float EfficiencyLossPerDegreeDifference = 0.0076923077f;
-
+        
         public override void TickRare()
         {
             CompProperties_Power props = this.compPowerTrader.Props;
@@ -32,15 +29,15 @@ namespace StirlingEngine
 
                     float dTemp = temperature2 - temperature1; //difference in temperatures
 
-                    flag = !Mathf.Approximately(dTemp, 0f);
+                    flag = !Mathf.Approximately(dTemp, 0f); //remain False if the temp difference is negligible
                     if (flag)
                     {
-                        float rate = conductivity * dTemp;
+                        float rate = conductivity * dTemp; //rate of temperature exchange
                         if (rate > 12f) //never as effective as a vent (rate = 14f)
                             rate = 12f;
-                        GenTemperature.EqualizeTemperaturesThroughBuilding(this, rate);
+                        GenTemperature.EqualizeTemperaturesThroughBuilding(this, rate); //Lifted from Building_Vent
 
-                        this.compPowerTrader.PowerOutput = powerSlope * dTemp + powerYIntercept;
+                        this.compPowerTrader.PowerOutput = powerSlope * dTemp + powerYIntercept; //Power output is linearly dependent on dTemp
                     }
                     else
                     {
