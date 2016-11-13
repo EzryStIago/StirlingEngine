@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>StrilingEngine</name>
+  <author>Demachy</author>
+  <targetVersion>0.15.1285</targetVersion>
+  <description>Adds a stirling engine for power production. To use, place between a heat source (hot room) and a heat sink (outdoors) as you would with a vent. Numbers based on: http://www.robertstirlingengine.com/theory.php</description>
+</ModMetaData>

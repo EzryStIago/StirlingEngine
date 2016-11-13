@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingDef Name="BuildingBase" Abstract="True">
+		<category>Building</category>
+		<soundImpactDefault>BulletImpactMetal</soundImpactDefault>
+		<selectable>true</selectable>
+		<drawerType>MapMeshAndRealTime</drawerType>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+		<repairEffect>Repair</repairEffect>
+		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+		<filthLeaving>BuildingRubble</filthLeaving>
+	</ThingDef>
+
+	 <ThingDef ParentName="BuildingBase">
+		<defName>StirlingEngine</defName>
+		<label>Stirling Engine</label>
+		<thingClass>Building_StirlingEngine</thingClass>
+		<graphicData>
+			<texPath>Things/Building/StirlingEngine</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1,1)</drawSize>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
+		</graphicData>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>Impassable</passability>
+		<blockWind>true</blockWind>
+		<fillPercent>1</fillPercent>
+		<coversFloor>true</coversFloor>
+		<blockLight>true</blockLight>
+		<castEdgeShadows>true</castEdgeShadows>
+		<staticSunShadowHeight>1.0</staticSunShadowHeight>
+		<statBases>
+		  <WorkToMake>1600</WorkToMake>
+		  <MaxHitPoints>100</MaxHitPoints>
+		  <Flammability>1.0</Flammability>
+		</statBases>
+		<tickerType>Rare</tickerType>
+		<description>Slowly equalizes the temperature between two rooms while generating electricity from the process. </description>
+		<costList>
+		  <Steel>90</Steel>
+		  <Component>3</Component>
+		</costList>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<placeWorkers>
+		  <li>PlaceWorker_Vent</li>
+		</placeWorkers>
+		<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+		<building>
+		  <canPlaceOverWall>true</canPlaceOverWall>
+		</building>
+		<comps>
+		  <li Class="CompProperties_Power">
+			<compClass>CompPowerTrader</compClass>
+			<basePowerConsumption>0</basePowerConsumption>
+		  </li>
+		  <li Class="CompProperties_Breakdownable"/>
+		</comps>
+		<designationCategory>Energy</designationCategory>
+		<designationHotKey>Misc4</designationHotKey>
+		<researchPrerequisites>
+		  <li>StirlingEngine</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+  
+</Defs>
